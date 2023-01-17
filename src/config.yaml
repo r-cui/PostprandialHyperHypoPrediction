@@ -1,0 +1,42 @@
+dataset: ohiot1dm
+patient_ids:
+  - 540
+  - 544
+  - 552
+  - 584
+  - 596
+  - 559
+  - 563
+  - 570
+  - 575
+  - 588
+  - 591
+
+#scheme: cla  # ablation: classification scheme
+scheme: reg
+
+# dataset
+hyper_thres: 180
+hypo_thres: 70
+
+input_len: 12
+future_len: 48
+
+# both inclusive
+hyper_window:  # after-meal 0-2h considered
+  - 1
+  - 24
+hypo_window:  # after-meal 2-4h considered
+  - 25
+  - 48
+
+ph: 6
+
+# train
+batch_size: 64
+#epoch: 1  # for dummy
+epoch: 50
+lr: 0.001
+hidden_size: 50
+
+
