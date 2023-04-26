@@ -1,5 +1,5 @@
 # Postprandial Hyperglycemia Hypoglycemia Prediction
-Codes for our work on postprandial hyperglycemia and hypoglycemia prediction.
+This is the official repository of the paper "Jointly Predicting Postprandial Hypoglycemia and Hyperglycemia Using Continuous Glucose Monitoring Data in Type 1 Diabetes" in EMBC2023.
 
 ## Dependencies
 This code has been tested using the following environment. 
@@ -12,12 +12,13 @@ $ source activate hyperhypo
 This repository is friendly to CPU based training and evaluation.
 
 ## Data preparation
-To replicate our work, one should prepare the raw OhioT1DM dataset and unzip our pretrained model `pretrained.zip`.
-The following structure is required.
+Please request the OhioT1DM dataset from the original producer Ohio University via http://smarthealth.cs.ohio.edu/OhioT1DM-dataset.html.
+
+Then make the the following structure in the workspace.
 ```
 pretrained/
 data/                         
-+-- ohiot1dm/                           request from http://smarthealth.cs.ohio.edu/OhioT1DM-dataset.html
++-- ohiot1dm/                           
 |   +-- OhioT1DM-training/
 |   +-- OhioT1DM-testing/
 |   +-- OhioT1DM-2-training/
@@ -31,14 +32,14 @@ Run our script to preprocess the raw data to `.csv` to directory `./data/ohiot1d
 ```
 (hyperhypo)$ python ./data/ohiot1dm/preprocess_ohiot1dm.py
 ```
-## 2. Training
-Run the following command to train from scratch.
-```
-(hyperhypo)$ python -m src.train
-```
-
-## 3. Evaluation
-To replicate our paper results using our pretrained model, run the following command.
+## 2. Replicating Paper Results
+Run the following command to load our model weights and validate the paper scores.
 ```
 (hyperhypo)$ python -m src.eval
+```
+
+## 3. Train from Scratch
+Run the following command to train from scratch. This may produce scores different to the paper due to randomness in your local environment.
+```
+(hyperhypo)$ python -m src.train
 ```
